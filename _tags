@@ -1,0 +1,13 @@
+true: package(batteries)
+true: package(ppx_import), package(ppx_compare), package(ppx_deriving.std)
+true: package(extlib)
+true: package(JS_Parser)
+true: package(menhirLib)
+true: package(Z3)
+true: use_menhir, table
+true: package(containers)
+true: package(containers.data)
+true: thread, debug
+<src/**>: include
+<tests/*>: package(oUnit), include
+<lib/runtests>: not_hygienic

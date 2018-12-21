@@ -1,0 +1,25 @@
+opam-version: "1.2"
+name: "JavaScriptVerification"
+version: "~unknown"
+maintainer: "Thomas Wood <thomas.wood09@imperial.ac.uk>"
+authors: "Thomas Wood <thomas.wood09@imperial.ac.uk>"
+homepage: "https://github.com/resource-reasoning/JaVerT"
+bug-reports: "https://github.com/resource-reasoning/JaVerT/issues"
+license: "BSD 3-clause"
+
+build: [
+  [make]
+]
+depends: [
+  "ocamlfind" {build}
+  "extlib" {build}
+  "menhir" {build}
+  "batteries" {build}
+  "containers"
+  "core" 
+  "ppx_import"
+  "ppx_deriving"
+  "ppx_compare"
+  "JS_Parser"
+  "ounit"
+]
