@@ -1,10 +1,10 @@
 opam-version: "1.2"
-name: "JavaScriptVerification"
+name: "JaVerT2.0"
 version: "~unknown"
-maintainer: "Thomas Wood <thomas.wood09@imperial.ac.uk>"
-authors: "Thomas Wood <thomas.wood09@imperial.ac.uk>"
-homepage: "https://github.com/resource-reasoning/JaVerT"
-bug-reports: "https://github.com/resource-reasoning/JaVerT/issues"
+maintainer: "Petar Maksimovic <p.maksimovic@imperial.ac.uk>"
+authors: "Jose Fragoso Santos <jose.fragoso.santos@imperial.ac.uk>, Petar Maksimovic <p.maksimovic@imperial.ac.uk>"
+homepage: "https://github.com/javert2/JaVerT2.0/"
+bug-reports: "https://github.com/javert2/JaVerT2.0//issues"
 license: "BSD 3-clause"
 
 build: [
