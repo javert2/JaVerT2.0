@@ -1,6 +1,6 @@
 opam-version: "1.2"
 name: "JaVerT2"
-version: "~unknown"
+version: "0.1"
 maintainer: "Petar Maksimovic <p.maksimovic@imperial.ac.uk>"
 authors: "Jose Fragoso Santos <jose.fragoso.santos@imperial.ac.uk>, Petar Maksimovic <p.maksimovic@imperial.ac.uk>"
 homepage: "https://github.com/javert2/JaVerT2.0/"
