@@ -466,6 +466,7 @@ let rec get_length_of_string (str : Expr.t) : int option =
   | LVar _ -> None
   | Lit (String s) -> Some (String.length s)
   | BinOp (sl, StrCat, sr) -> Option.default None (Option.map (fun ll -> Option.map (fun lr -> ll + lr) (f sr)) (f sl)) 
+  | UnOp (ToStringOp, _) -> None
   | _ -> raise (Failure (Printf.sprintf "get_length_of_string: string equals %s, impossible" (Expr.str str)))
   )
 
