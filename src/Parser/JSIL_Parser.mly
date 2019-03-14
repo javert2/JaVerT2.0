@@ -791,7 +791,7 @@ logic_cmd_target:
     { SpecVar xs }
 
 (* fresh_lvar (x, e) *)
-  | FRESH_LVAR; LBRACE; x=VAR; s=LVAR; RBRACE
+  | FRESH_LVAR; LBRACE; x=VAR; COMMA; s=LVAR; RBRACE
     { FreshLVar (x, s) }
 
 

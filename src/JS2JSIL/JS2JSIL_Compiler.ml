@@ -1475,7 +1475,7 @@ let rec translate_expr tr_ctx e : ((Annot.t * (string option) * LabCmd.t) list) 
     when (e_f.JSParserSyntax.exp_stx = (JSParserSyntax.Var js_symbolic_constructs.js_fresh_symb)) ->
       let x = 
         (match (List.map (fun xe -> xe.JSParserSyntax.exp_stx) xes) with
-        | [ JSParserSyntax.Var x ] -> "#" ^ x
+        | [ JSParserSyntax.String x ] -> "#" ^ x
         | _ -> raise (Failure "Invalid symbolic")) in 
       let x_v = (fresh_var ()) ^ "_v" in 
       let cmd1 = (metadata, None, LLogic (LCmd.FreshLVar (x_v, x))) in 
