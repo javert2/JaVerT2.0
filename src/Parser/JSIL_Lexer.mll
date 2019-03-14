@@ -121,6 +121,7 @@
       "assume",       JSIL_Parser.ASSUME;
       "assume_type",  JSIL_Parser.ASSUME_TYPE;
       "spec_var",     JSIL_Parser.SPEC_VAR;
+      "fresh_lvar",   JSIL_Parser.FRESH_LVAR;
       "bind",         JSIL_Parser.BIND;
       "existentials", JSIL_Parser.EXISTENTIALS;
       "sep_assert",   JSIL_Parser.SEPASSERT;

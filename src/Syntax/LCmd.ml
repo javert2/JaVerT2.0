@@ -13,6 +13,7 @@ type t =
   | Assume     of Formula.t                    (** Assume           *)
   | AssumeType of string * Type.t              (** Assume Type      *)
   | SpecVar    of string list                  (** Spec Var         *)
+  | FreshLVar  of string * string              (** Fresh LVar       *)
   | SL         of SLCmd.t                                                           
 
 let rec map 
@@ -39,6 +40,7 @@ let rec map
 		| Assert a           -> Assert (map_p a)
     | AssumeType _       -> mapped_lcmd 
     | SpecVar _          -> mapped_lcmd 
+    | FreshLVar (x, s)   -> FreshLVar (x, s)
     | SL sl_cmd          -> SL (map_sl sl_cmd)
 
 
@@ -71,5 +73,7 @@ let rec str (lcmd : t) : string =
     | AssumeType (x, t)  -> "assume_type (" ^ x ^ ", " ^ (Type.str t) ^ ")" 
     
     | SpecVar xs         -> "spec_var (" ^ (String.concat ", " xs) ^ ")"
+    
+    | FreshLVar (x, s)   -> "fresh_lvar (" ^ x ^ ", " ^ s ^ ")"
 
     | SL sl_cmd          -> SLCmd.str sl_cmd 

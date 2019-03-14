@@ -157,6 +157,7 @@ let copy_and_clear_globals () =
 %token RBLNSYM
 %token ASSUME_TYPE
 %token SPEC_VAR
+%token FRESH_LVAR
 %token LSTNTH
 %token STRNTH
 %token BIND
@@ -788,6 +789,11 @@ logic_cmd_target:
 (* spec_var (x, t) *)
   | SPEC_VAR; LBRACE; xs = separated_list(COMMA, LVAR); RBRACE
     { SpecVar xs }
+
+(* fresh_lvar (x, e) *)
+  | FRESH_LVAR; LBRACE; x=VAR; s=LVAR; RBRACE
+    { FreshLVar (x, s) }
+
 
 (* branch (fo) *)
   | BRANCH; LBRACE; fo = pure_assertion_target; RBRACE   

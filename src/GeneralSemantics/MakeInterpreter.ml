@@ -186,6 +186,14 @@ let print_lconfiguration (lcmd : LCmd.t) (state : State.t) : unit =
     
     | SpecVar xs -> [ State.add_spec_vars state (Var.Set.of_list xs) ]
     
+    | FreshLVar (x, s) -> 
+       (* I need to evaluate the expression - it needs to be a real string *)
+       let new_lvar  = fresh_lvar () ^ s in
+       let state'    = State.add_spec_vars state (Var.Set.of_list [ new_lvar ]) in 
+       let v         = eval_expr (LVar new_lvar) in 
+       let state''   = update_store state' x v in 
+       [ state'' ]
+
     | Assert f -> 
         let store_subst = Store.to_ssubst (State.get_store state) in 
         let f'          = Formula.substitution store_subst true f in  

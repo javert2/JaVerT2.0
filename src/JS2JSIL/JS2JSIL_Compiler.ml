@@ -1472,6 +1472,19 @@ let rec translate_expr tr_ctx e : ((Annot.t * (string option) * LabCmd.t) list) 
         [ cmd1; cmd2; cmd3; cmd4 ], PVar x_v, []
 
   | JSParserSyntax.Call (e_f, xes)
+    when (e_f.JSParserSyntax.exp_stx = (JSParserSyntax.Var js_symbolic_constructs.js_fresh_symb)) ->
+      let x = 
+        (match (List.map (fun xe -> xe.JSParserSyntax.exp_stx) xes) with
+        | [ JSParserSyntax.Var x ] -> "#" ^ x
+        | _ -> raise (Failure "Invalid symbolic")) in 
+      let x_v = (fresh_var ()) ^ "_v" in 
+      let cmd1 = (metadata, None, LLogic (LCmd.FreshLVar (x_v, x))) in 
+      let cmd2 = (metadata, None, LLogic (LCmd.Assume (Not (Eq (LVar x, Lit Empty))))) in
+      let cmd3 = (metadata, None, LLogic (LCmd.Assume (Not (Eq (UnOp (TypeOf, LVar x), Lit (Type ListType)))))) in
+        [ cmd1; cmd2; cmd3 ], PVar x_v, []
+
+
+  | JSParserSyntax.Call (e_f, xes)
     when (e_f.JSParserSyntax.exp_stx = (JSParserSyntax.Var js_symbolic_constructs.js_symb_number)) ->
       let x = 
         (match (List.map (fun xe -> xe.JSParserSyntax.exp_stx) xes) with

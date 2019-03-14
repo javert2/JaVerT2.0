@@ -9,6 +9,7 @@ type js_symbolic_constructs_type = {
 	js_assume      : string; 
 	js_assert      : string; 
 	js_symb        : string;
+	js_fresh_symb  : string; 
 	js_symb_number : string; 
 	js_symb_string : string;
 	js_symb_bool   : string
@@ -18,6 +19,7 @@ let js_symbolic_constructs = {
 	js_assume      = "Assume"; 
 	js_assert      = "Assert"; 
 	js_symb        = "symb";
+	js_fresh_symb  = "fresh_symb";
 	js_symb_number = "symb_number"; 
 	js_symb_string = "symb_string";
 	js_symb_bool   = "symb_bool" 
@@ -143,75 +145,41 @@ let fresh_sth (name : string) : (unit -> string) =
     v
   in f
 
-let fresh_var : (unit -> string) = fresh_sth "x_"
-
-let fresh_scope_chain_var : (unit -> string) = fresh_sth "x_sc_"
-
-let fresh_found_var : (unit -> string) = fresh_sth "x_found_"
-
-let fresh_fun_var : (unit -> string) = fresh_sth "x_f_"
-
-let fresh_obj_var : (unit -> string) = fresh_sth "x_o_"
-
-let fresh_er_var : (unit -> string) = fresh_sth "x_er_"
-
-let fresh_err_var : (unit -> string) = fresh_sth "x_error_"
-
-let fresh_this_var : (unit -> string) = fresh_sth "x_this_"
-
-let fresh_case_var : (unit -> string) = fresh_sth "x_case_"
-
-let fresh_desc_var : (unit -> string) = fresh_sth "x_desc_"
-
-let fresh_body_var : (unit -> string) = fresh_sth "x_body_"
-
-let fresh_fscope_var : (unit -> string) = fresh_sth "x_fscope_"
-
-let fresh_xfoundb_var : (unit -> string) = fresh_sth "x_found_b_"
-
-let fresh_label : (unit -> string) = fresh_sth "lab_"
-
-let fresh_next_label : (unit -> string) = fresh_sth "next_"
-
-let fresh_then_label : (unit -> string) = fresh_sth "then_"
-
-let fresh_else_label : (unit -> string) = fresh_sth "else_"
-
-let fresh_endif_label : (unit -> string) = fresh_sth "fi_"
-
-let fresh_end_label : (unit -> string) = fresh_sth "end_"
-
-let fresh_end_switch_label : (unit -> string) = fresh_sth "end_switch_"
-
-let fresh_end_case_label : (unit -> string) = fresh_sth "end_case_"
-
-let fresh_default_label : (unit -> string) = fresh_sth "default_"
-
-let fresh_b_cases_label : (unit -> string) = fresh_sth "b_cases_"
-
-let fresh_logical_variable : (unit -> string) = fresh_sth "#x"
-
-let fresh_break_label : (unit -> string) = fresh_sth "break_"
-
-let fresh_loop_head_label : (unit -> string) = fresh_sth "loop_h_"
-
-let fresh_loop_cont_label : (unit -> string) = fresh_sth "loop_c_"
-
-let fresh_loop_guard_label : (unit -> string) = fresh_sth "loop_g_"
-
-let fresh_loop_body_label : (unit -> string) = fresh_sth "loop_b_"
-
-let fresh_loop_end_label : (unit -> string) = fresh_sth "loop_e_"
-
-let fresh_tcf_finally_label : (unit -> string) = fresh_sth "finally_"
-
-let fresh_tcf_end_label : (unit -> string) = fresh_sth "end_tcf_"
-
-let fresh_tcf_err_try_label : (unit -> string) = fresh_sth "err_tcf_t_"
-
+let fresh_var                 : (unit -> string) = fresh_sth "x_"
+let fresh_scope_chain_var     : (unit -> string) = fresh_sth "x_sc_"
+let fresh_found_var           : (unit -> string) = fresh_sth "x_found_"
+let fresh_fun_var             : (unit -> string) = fresh_sth "x_f_"
+let fresh_obj_var             : (unit -> string) = fresh_sth "x_o_"
+let fresh_er_var              : (unit -> string) = fresh_sth "x_er_"
+let fresh_err_var             : (unit -> string) = fresh_sth "x_error_"
+let fresh_this_var            : (unit -> string) = fresh_sth "x_this_"
+let fresh_case_var            : (unit -> string) = fresh_sth "x_case_"
+let fresh_desc_var            : (unit -> string) = fresh_sth "x_desc_"
+let fresh_body_var            : (unit -> string) = fresh_sth "x_body_"
+let fresh_fscope_var          : (unit -> string) = fresh_sth "x_fscope_"
+let fresh_xfoundb_var         : (unit -> string) = fresh_sth "x_found_b_"
+let fresh_label               : (unit -> string) = fresh_sth "lab_"
+let fresh_next_label          : (unit -> string) = fresh_sth "next_"
+let fresh_then_label          : (unit -> string) = fresh_sth "then_"
+let fresh_else_label          : (unit -> string) = fresh_sth "else_"
+let fresh_endif_label         : (unit -> string) = fresh_sth "fi_"
+let fresh_end_label           : (unit -> string) = fresh_sth "end_"
+let fresh_end_switch_label    : (unit -> string) = fresh_sth "end_switch_"
+let fresh_end_case_label      : (unit -> string) = fresh_sth "end_case_"
+let fresh_default_label       : (unit -> string) = fresh_sth "default_"
+let fresh_b_cases_label       : (unit -> string) = fresh_sth "b_cases_"
+let fresh_logical_variable    : (unit -> string) = fresh_sth "#x"
+let fresh_break_label         : (unit -> string) = fresh_sth "break_"
+let fresh_loop_head_label     : (unit -> string) = fresh_sth "loop_h_"
+let fresh_loop_cont_label     : (unit -> string) = fresh_sth "loop_c_"
+let fresh_loop_guard_label    : (unit -> string) = fresh_sth "loop_g_"
+let fresh_loop_body_label     : (unit -> string) = fresh_sth "loop_b_"
+let fresh_loop_end_label      : (unit -> string) = fresh_sth "loop_e_"
+let fresh_tcf_finally_label   : (unit -> string) = fresh_sth "finally_"
+let fresh_tcf_end_label       : (unit -> string) = fresh_sth "end_tcf_"
+let fresh_tcf_err_try_label   : (unit -> string) = fresh_sth "err_tcf_t_"
 let fresh_tcf_err_catch_label : (unit -> string) = fresh_sth "err_tcf_c_"
-
-let fresh_tcf_ret : (unit -> string) = fresh_sth "ret_tcf_"
+let fresh_tcf_ret             : (unit -> string) = fresh_sth "ret_tcf_"
 
 let fresh_loop_vars () =
 	let head = fresh_loop_head_label () in
